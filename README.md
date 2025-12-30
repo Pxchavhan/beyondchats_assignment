@@ -1,130 +1,86 @@
-📚 BeyondChats Assignment – Full Stack Article Processing System
+# BeyondChats Assignment – Full Stack Project
 
-This project is a 3-phase full-stack application built as part of the BeyondChats assignment.
-It covers web scraping, AI-based article rewriting, backend API development, and frontend UI rendering.
+This project was developed as part of the BeyondChats technical assignment.  
+It is a three-phase full-stack project where each phase builds on the previous one, starting from data collection and ending with a frontend dashboard.
 
-🧩 Project Overview
+The purpose of this assignment is to demonstrate how different parts of a real-world system work together, including scraping, AI-based processing, backend APIs, and frontend rendering.
 
-The system performs the following tasks:
+---
 
-Phase 1 – Scrapes articles from given URLs and stores them as text files
+## Phase 1 – Article Scraping
 
-Phase 2 – Rewrites scraped articles using an AI model and stores updated versions
+The first phase focuses on collecting article data from the provided BeyondChats blog URLs.
 
-Phase 3 – Displays original and updated articles in a ReactJS dashboard using Laravel APIs
+A Node.js script is used to scrape content from the web pages. Only the relevant article text is extracted, while unnecessary elements such as scripts, styles, navigation bars, and embedded components are removed.
 
-Each phase builds upon the previous one.
+Each article is saved as a plain text file for further processing.
 
-✅ Phase 1: Article Scraping (Backend)
-Objective
+### What this phase does
+- Accepts article URLs as input  
+- Scrapes article titles and main content  
+- Cleans the extracted text  
+- Saves the content into `.txt` files  
 
-Scrape articles from provided URLs and store them locally in text format.
+### Technologies used
+- Node.js  
+- Axios  
+- Cheerio  
 
-Key Features
+---
 
-Accepts a list of article URLs
+## Phase 2 – Article Rewriting (LLM-Based)
 
-Extracts article title and content
+In the second phase, the articles scraped in Phase 1 are rewritten using a Large Language Model (LLM).
 
-Saves each article as a .txt file
+This phase demonstrates how AI can be integrated to rewrite or improve existing content. The rewritten articles are stored separately so that original and updated versions can be compared.
 
-Handles invalid or unreachable URLs gracefully
+Error handling is implemented to ensure the application continues running even if the AI service fails or returns an empty response.
 
-Technologies Used
+### What this phase does
+- Reads original article text files  
+- Sends content to an LLM for rewriting  
+- Generates rewritten versions of each article  
+- Stores rewritten articles separately  
 
-Node.js
+### Technologies used
+- Node.js  
+- LLM API  
+- dotenv  
 
-Axios
+---
 
-Cheerio
+## Phase 3 – Frontend Article Dashboard
 
-File System (fs)
+The final phase focuses on displaying the articles using a frontend application.
 
+A Laravel backend exposes APIs for:
+- Original articles  
+- Rewritten articles  
 
-✅ Phase 2: Article Rewriting using AI
-Objective
+A ReactJS frontend fetches this data and displays it in a clean, responsive, and professional UI. Users can switch between original and rewritten versions of articles easily.
 
-Rewrite the scraped articles using an AI model and store updated versions.
+The frontend also handles loading states and API errors properly.
 
-Key Features
+### What this phase does
+- Fetches data from Laravel APIs  
+- Displays original and rewritten articles  
+- Provides a responsive and professional UI  
+- Handles loading and error states  
 
-Reads original article text files
+### Technologies used
+- Laravel (API backend)  
+- ReactJS (Vite)  
+- Axios  
+- JSX and CSS in a single file  
 
-Sends content to AI rewriting API
+---
 
-Generates rewritten versions
+## Project Overview
 
-Saves rewritten articles separately
+This project demonstrates an end-to-end workflow involving:
+- Web scraping  
+- AI-based content rewriting  
+- API development  
+- Frontend data visualization  
 
-Preserves article structure and readability
-
-Technologies Used
-
-Node.js
-
-AI Text Rewriting API
-
-dotenv for environment variables
-
-File System (fs)
-
-
-
-✅ Phase 3: Frontend Dashboard (React + Laravel)
-Objective
-
-Display original articles and rewritten articles in a professional UI.
-
-🖥 Backend (Laravel API)
-Features
-
-REST APIs to fetch articles
-
-Separate endpoints for:
-
-Original articles
-
-Updated (rewritten) articles
-
-CORS enabled for frontend access
-
-API Endpoints
-Method	Endpoint	Description
-GET	/api/articles	Fetch original articles
-GET	/api/articles/updated	Fetch rewritten articles
-Technologies Used
-
-Laravel
-
-PHP
-
-REST API
-
-CORS configuration
-
-🎨 Frontend (ReactJS)
-Features
-
-Single-page React dashboard
-
-Fetches data from Laravel APIs
-
-Tab-based navigation:
-
-Original Articles
-
-Updated Articles
-
-Responsive and clean UI
-
-Graceful error handling
-
-Technologies Used
-
-React (Vite)
-
-Axios
-
-JSX + CSS in a single file
-
-JavaScript
+Together, these phases show how multiple technologies can be combined to build a complete full-stack application.
